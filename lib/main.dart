@@ -7,6 +7,7 @@ import 'package:bookly/Features/home/domain/usecases/fetch_newestBooks_usecase.d
 import 'package:bookly/Features/home/presentation/manger/Fetch_newest_books_cubit/cubit/fetchnewestbooks_cubit.dart';
 import 'package:bookly/Features/home/presentation/manger/cubit/fetch_featured_books_cubit.dart';
 import 'package:bookly/constants.dart';
+import 'package:bookly/core/utils/BlocOberver.dart';
 import 'package:bookly/core/utils/apiservice.dart';
 import 'package:bookly/core/utils/app_router.dart';
 import 'package:dio/dio.dart';
@@ -27,6 +28,7 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
   await Hive.openBox(kfeaturedBox);
+  Bloc.observer = Blocobserver();
   HomeLocalDataSource homeRemoteDataSource;
   ApiService apiService;
   setUpServiceLocator();
